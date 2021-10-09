@@ -108,3 +108,69 @@ bdata = fin.read()
 print(len(bdata))
 fin.close()
 
+# 14.1.7 withによるファイルの自動クローズ
+with open('relativity', 'w') as fout:
+    fout.write(poem)
+
+# 14.1.8 seek()による位置の変更
+fin = open('bfile', 'rb')
+fin.tell()
+fin.seek(255)
+bdata = fin.read()
+print(len(bdata))
+print(bdata[0])
+
+import os
+print(os.SEEK_SET)
+print(os.SEEK_CUR)
+print(os.SEEK_END)
+
+fin = open('bfile', 'rb')
+print(fin.seek(-1, 2))
+print(fin.tell())
+
+bdata = fin.read()
+print(len(bdata))
+print(bdata[0])
+
+fin = open('bfile', 'rb')
+print(fin.seek(254, 0))
+print(fin.tell())
+print(fin.seek(1, 1))
+print(fin.tell())
+bdata = fin.read()
+print(len(bdata))
+print(bdata[0])
+fin.close()
+
+# 14.3.1 exists()のファイルチェック
+import os
+print(os.path.exists('oops.txt'))
+print(os.path.exists('./oops.txt'))
+print(os.path.exists('waffles'))
+print(os.path.exists('.'))
+print(os.path.exists('..'))
+
+# 14.3.2 isfile()によるファイルタイプのチェック
+name = 'oops.txt'
+print(os.path.isfile(name))
+print(os.path.isdir(name))
+print(os.path.isdir('.'))
+print(os.path.isabs('/big/fake/name'))
+print(os.path.isabs('big/fake/name'))
+
+# 14.3.3 copy()
+import shutil
+shutil.copy('oops.txt', 'ohno.txt')
+
+# 14.3.4 rename()
+import os
+os.rename('ohno.txt', 'ohwell.txt')
+
+# 14.3.5 link(),symlink()
+# os.link('oops.txt', 'yikes.txt')
+print(os.path.isfile('yikes.txt'))
+print(os.path.islink('yikes.txt'))
+
+# os.symlink('oops.txt', 'jeepers.txt')
+print(os.path.islink('jeepers.txt'))
