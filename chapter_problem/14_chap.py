@@ -174,3 +174,103 @@ print(os.path.islink('yikes.txt'))
 
 # os.symlink('oops.txt', 'jeepers.txt')
 print(os.path.islink('jeepers.txt'))
+
+# 14.3.6 chmod()
+# os.chmod('oops.txt', 0o400)
+# import stat
+# os.chmod('oops.txt', stat.S_IRUSR)
+
+# 14.3.7 chown() オーナー変更
+# uid = 5
+# gid = 22
+# os.chown('oops', uid, gid)
+
+# 14.3.8 remove() ファイル削除
+os.remove('oops.txt')
+os.path.exists('oops.txt')
+
+# 14.4.1 mkdir()
+# os.mkdir('poems')
+# os.path.exists('poems')
+
+# 14.4.2 rmdir()
+# os.rmdir('poems')
+# os.path.exists('poems')
+
+# 14.4.3 scandir()
+# os.mkdir('poems')
+
+with os.scandir("poems") as it:
+    entries = [entry.name for entry in it]
+print(entries)
+
+# os.mkdir('poems/mcintyre')
+with os.scandir("poems") as it:
+    entries = [entry.name for entry in it]
+print(entries)
+
+# 14.4.4 chdir()
+# import os
+# os.chdir('poems')
+# with os.scandir("poems") as it:
+#     entries = [entry.name for entry in it]
+# print(entries)
+
+# 14.4.5 glob()
+import glob
+print(glob.glob('p*'))
+
+# 14.5 パス名
+# 14.5.1 abspath()
+print(os.path.abspath('oops.txt'))
+
+# 14.5.2 realpath()
+print(os.path.realpath('jeepers.txt'))
+print(os.path.abspath('jeepers.txt'))
+
+# 14.5.3 os.path.loin()
+import os
+win_file = os.path.join("eek", "urk")
+win_file = os.path.join(win_file, "snort.txt")
+print(win_file)
+
+# 14.5.4 pathlib
+from pathlib import Path
+file_path = Path('eek') / 'urk' / 'snort.txt'
+print(file_path)
+
+print(file_path.name)
+print(file_path.suffix)
+print(file_path.stem)
+
+from pathlib import PureWindowsPath
+print(PureWindowsPath(file_path))
+
+# 14.6 BytesIO,StringIO
+
+# q14.1
+import glob
+print(glob.glob('*'))
+
+import os
+with os.scandir('.') as it:
+    entries = [entry.name for entry in it]
+print(entries)
+
+# q14.2
+import glob
+print(glob.glob('../*'))
+
+with os.scandir('..') as it:
+    entries = [entry.name for entry in it]
+print(entries)
+
+# q14.3
+test1 = 'This is a test of the emergency text system'
+with open('test.txt', 'w') as it:
+    it.write(test1)
+
+# q14.4
+with open('test.txt', 'r') as it:
+    test2 = it.read()
+print(test2 == test1)
