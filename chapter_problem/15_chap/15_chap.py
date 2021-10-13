@@ -37,4 +37,13 @@ print(os.cpu_count())
 # print(psutil.cpu_percent(True))
 # print(psutil.cpu_percent(percpu=True))
 
+# 15.3.2 プロセス
+# dishes.pyに記載
+
+# 15.3.3 スレッド
+# thread1.pyに記載
+
+# 15.3.4 concurrent.futures
+# cf.pyに記載
+
 
