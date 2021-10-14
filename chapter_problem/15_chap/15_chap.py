@@ -46,4 +46,32 @@ print(os.cpu_count())
 # 15.3.4 concurrent.futures
 # cf.pyに記載
 
+# 15.3.5 グリーンスレッドとgevent
+# gevent_test.pyに記載
+
+# 15.3.6 twisted
+# knock_server.py,knock_client.pyに記載 起動はしない
+
+# 15.3.8 Redis
+# redis_washer.py,redis_dryer.pyに記載 エラー発生
+
+# q15
+import multiprocessing
+import random
+
+from datetime import datetime
+from time import sleep
+
+def now(seconds):
+    sleep(seconds)
+    print('wait', seconds, 'seconds, time is', datetime.utcnow())
+
+if __name__ == '__main__':
+    for n in range(3):
+        seconds = random.random()
+        proc = multiprocessing.Process(target=now, args=(seconds,))
+        proc.start()
+
+
+
 
