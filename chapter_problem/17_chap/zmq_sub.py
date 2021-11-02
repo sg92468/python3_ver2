@@ -1,7 +1,7 @@
 import zmq
 
 host = '127.0.0.1'
-port = 6789
+por17.4t = 6789
 ctx = zmq.Context()
 sub = ctx.socket(zmq.SUB)
 sub.connect(f'tcp://{host}:{port}')
