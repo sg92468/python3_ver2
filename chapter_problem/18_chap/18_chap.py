@@ -72,3 +72,6 @@
 # #     return render_template('home.html', thing=thing, height=height, color=color)
 
 # app.run(port=5000, debug=True)
+
+x = 551 % 31
+print(x)
